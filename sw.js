@@ -1,5 +1,5 @@
 var cacheName = "revRest-cahce-v";
-var randomVerNum = Math.floor(random()*10000);
+var randomVerNum = Math.floor(Math.random()*10000);
 cacheName += randomVerNum;
 
 self.addEventListener('install', function(event){
@@ -25,7 +25,7 @@ self.addEventListener('install', function(event){
 })
 
 self.addEventListener('activate', function (event) {
-  event.waitUntil(clients.claims())
+  event.waitUntil(clients.claim())
 })
 
 self.addEventListener('fetch', function(event){

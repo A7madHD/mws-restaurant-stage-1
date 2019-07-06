@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body,td,th,p{
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Cairo', sans-serif;
 	font-size: 10pt;
 	color: #333;
 	line-height: 1.5;
@@ -13,7 +13,7 @@ body {
 	position:relative;
 }
 ul, li {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Cairo', sans-serif;
 	font-size: 10pt;
 	color: #333;
 }
@@ -29,7 +29,7 @@ a img{
 	border: none 0px #fff;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cairo', sans-serif;
   margin: 0 0 20px;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -54,6 +54,7 @@ nav {
   height: 80px;
   background-color: #252831;
   text-align:center;
+  display: flex;
 }
 nav h1 {
   margin: auto;
@@ -61,7 +62,7 @@ nav h1 {
 nav h1 a {
   color: #fff;
   font-size: 14pt;
-  font-weight: 200;
+  font-weight: 600;
   letter-spacing: 10px;
   text-transform: uppercase;
 }
@@ -109,6 +110,7 @@ nav h1 a {
   height: 50px;
   background-color: #3397DB;
   align-items: center;
+  padding-top: 10px;
 }
 .filter-options h2 {
   color: white;
@@ -120,13 +122,14 @@ nav h1 a {
 .filter-options select {
   background-color: white;
   border: 1px solid #fff;
-  font-family: Arial,sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 11pt;
   height: 35px;
   letter-spacing: 0;
   margin: 10px;
   padding: 0 10px;
-  width: 200px;
+  width: 150px;
+  z-index: 9;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -136,14 +139,18 @@ nav h1 a {
   margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
-  font-family: Arial,sans-serif;
+  font-family: 'Cairo', sans-serif;
   margin: 15px;
   min-height: 380px;
-  padding: 0 30px 25px;
+  padding: 20px 30px;
   text-align: left;
   width: 270px;
 }
@@ -157,9 +164,9 @@ nav h1 a {
 }
 #restaurants-list li h1 {
   color: #f18200;
-  font-family: Arial,sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 14pt;
-  font-weight: 200;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.3;
   margin: 20px 0 10px;
@@ -169,17 +176,28 @@ nav h1 a {
   margin: 0;
   font-size: 11pt;
 }
+#restaurants-list li .button {
+  display: flex;
+  justify-content: center;
+}
 #restaurants-list li a {
-  background-color: orange;
-  border-bottom: 3px solid #eee;
-  color: #fff;
+  border: 2px solid orange;
+  color: orange;
   display: inline-block;
   font-size: 10pt;
+  font-weight: 700;
   margin: 15px 0 0;
   padding: 8px 30px 10px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  border-radius: 8px;
+  box-shadow: 3px 3px #eee;
+}
+#restaurants-list li a:hover{
+  background-color: orange;
+  color: #eee;
+  box-shadow: 2px 2px #eee;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -209,7 +227,7 @@ nav h1 a {
 }
 #restaurant-name {
   color: #f18200;
-  font-family: Arial,sans-serif;
+  font-family: 'Cairo', sans-serif;
   font-size: 20pt;
   font-weight: 200;
   letter-spacing: 0;
@@ -258,7 +276,9 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  box-shadow: 14px 6px #252831;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
@@ -272,4 +292,29 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+@media only screen and (max-width:340px){
+  .filter-options select{
+    width:auto;
+    font-size: inherit;
+  }
+}
+
+@media only screen and (max-width:768px){
+  .inside #map-container{
+    width: 100%;
+    height: 30%;
+    z-index: 9;
+  }
+  #restaurant-container{
+    padding: 360px 40px 30px;
+    width: auto;
+  }
+  #reviews-container{
+    width: auto;
+  }
+  .inside #footer {
+    width: auto;
+  }
 }
