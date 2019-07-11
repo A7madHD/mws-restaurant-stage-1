@@ -7,15 +7,16 @@ self.addEventListener('install', function(event){
     caches.open(cacheName).then(function(cahce){
       console.log(`The Cache ${cacheName} is open!`);
       return Cache.addAll([
-        './index.html',
-        './restaurant.html',
-        './css/main.css',
-        './css/responsive.css',
-        './js/dbhelper.js',
-        './js/main.js',
-        './js/restaurant_info.js',
-        './img/*',
-        './data/*'
+        '/*',
+        '/index.html',
+        '/restaurant.html',
+        '/css/main.css',
+        '/css/responsive.css',
+        '/js/dbhelper.js',
+        '/js/main.js',
+        '/js/restaurant_info.js',
+        '/img/*',
+        '/data/*'
       ]);
     })
     .catch(function(error) {

@@ -80,9 +80,9 @@ initMap = () => {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoiYTdtYWFkaGQiLCJhIjoiY2p3YmFicDkwMGg5dTRhb2p6czRpdW5odyJ9.7QIlJPmIm8nGvFLRyHGRHQ',
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Map data &copy; <a tabindex="-1" href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a tabindex="-1" href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a tabindex="-1" href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
 
@@ -213,3 +213,9 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+document.addEventListener("ready",function(){
+  $("#map-container div").each({
+    $(this).attr("aria-hidden","true");
+    
+  })
+})
