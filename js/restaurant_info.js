@@ -31,6 +31,7 @@ initMap = () => {
       }).addTo(newMap);
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
+      hideMap();
     }
   });
 }  
@@ -128,6 +129,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  $(title).attr("tabindex","0");
   container.appendChild(title);
 
   if (!reviews) {
@@ -138,7 +140,9 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
+    var b = createReviewHTML(review)
+    $(b).attr("tabindex","0");
+    ul.appendChild(b);
   });
   container.appendChild(ul);
 }
@@ -192,3 +196,13 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+function hideMap(){
+  var child = $("#map-container").find('*');
+  console.log(child);
+    child.each( function(x){
+      $(this).attr("tabindex","-1");
+      console.log($(this));
+    })
+}
+

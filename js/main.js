@@ -3,6 +3,7 @@ let restaurants,
   cuisines
 var newMap
 var markers = []
+var counter= 0;
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
@@ -85,7 +86,7 @@ initMap = () => {
       'Imagery © <a tabindex="-1" href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
-
+  hideMap();
   updateRestaurants();
 }
 /* window.initMap = () => {
@@ -156,9 +157,11 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = (restaurant) => {
+  counter ++;
   const li = document.createElement('li');
-
+  const label = document.createElement('label');
   const image = document.createElement('img');
+  image.alt = `${restaurant.name} supplementary image`
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
@@ -180,9 +183,15 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  $(more).attr("aria-labelledby",`${counter}-label`)
+  $(more).attr("role","button");
   more.href = DBHelper.urlForRestaurant(restaurant);
   button.append(more);
   li.append(button)
+  label.className = "d-none";
+  label.id = `${counter}-label`;
+  label.innerHTML=`Restaurant Number ${counter}, ${name.innerHTML} Restaurant, address ${address.innerHTML}, click here for more details`;
+  button.append(label)
 
   return li
 }
@@ -198,6 +207,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     function onClick() {
       window.location.href = marker.options.url;
     }
+    hideMap();
     self.markers.push(marker);
   });
 
@@ -213,9 +223,11 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
-document.addEventListener("ready",function(){
-  $("#map-container div").each({
-    $(this).attr("aria-hidden","true");
-    
-  })
-})
+function hideMap(){
+  var child = $("#map-container").find('*');
+  console.log(child);
+    child.each( function(x){
+      $(this).attr("tabindex","-1");
+      console.log($(this));
+    })
+}
