@@ -4,7 +4,7 @@ var newMap;
 /**
  * Initialize map as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {  
+$(document).ready((event) => {  
   initMap();
 });
 
@@ -89,6 +89,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.alt = restaurant.name + " restaurant supplementary image";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -140,9 +141,9 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    var b = createReviewHTML(review)
-    $(b).attr("tabindex","0");
-    ul.appendChild(b);
+    var temp = createReviewHTML(review)
+    $(temp).attr("tabindex","0");
+    ul.appendChild(temp);
   });
   container.appendChild(ul);
 }

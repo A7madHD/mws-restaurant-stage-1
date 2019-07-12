@@ -326,3 +326,7 @@ nav h1 a {
 .d-none{
   display: none;
 }
+
+.leaflet-top {
+  top: 50px !important;
+}

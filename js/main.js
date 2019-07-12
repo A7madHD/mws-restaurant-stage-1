@@ -8,7 +8,7 @@ var counter= 0;
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {
+$(document).ready((event) => {
   initMap(); // added 
   fetchNeighborhoods();
   fetchCuisines();
@@ -161,7 +161,7 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
   const label = document.createElement('label');
   const image = document.createElement('img');
-  image.alt = `${restaurant.name} supplementary image`
+  image.alt = `${restaurant.name} restaurant supplementary image`
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
