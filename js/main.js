@@ -225,9 +225,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 
 function hideMap(){
   var child = $("#map-container").find('*');
-  console.log(child);
     child.each( function(x){
       $(this).attr("tabindex","-1");
-      console.log($(this));
     })
 }
